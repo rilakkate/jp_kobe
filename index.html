@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎈 神戶9天8夜冬日親子之旅 - 童趣版行程</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght:500;700;900&display=swap" rel="stylesheet">
+    <title>🎈 神戶9天8夜冬日親子之旅</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
     <style>
@@ -43,10 +43,11 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
         }
         .navbar .logo { font-size: 1.5em; font-weight: bold; color: #FFC107; } /* 醒目的黃色 Logo */
+        /* 桌面版通用連結樣式 */
         .navbar a { color: white; text-decoration: none; margin-left: 25px; transition: color 0.3s; padding: 5px 0; font-weight: 500; }
         .navbar a:hover { color: #FFC107; }
 
-        /* --- Dropdown Menu Styles for Navbar (每日行程下拉選單) --- */
+        /* --- Dropdown Menu Styles for Navbar (桌面版) --- */
         .dropdown {
             position: relative;
             display: inline-block;
@@ -69,7 +70,8 @@
             top: 100%; 
             left: 0;
             overflow: hidden;
-            transform: translateX(-50px);
+            /* 視覺修正：將下拉選單從按鈕位置開始展開 */
+            transform: translateX(-5px);
         }
         .dropdown-content a {
             color: white;
@@ -245,7 +247,6 @@
         
         /* 行程細節字體樣式 */
         .activity h4 { margin-top: 0; margin-bottom: 5px; color: #00BCD4; font-size: 1.2em; font-weight: bold; }
-        /* 1. 調整：標註景點名稱的樣式 - 根據使用者要求調整字體大小和粗細 */
         .highlighted-activity-name {
             color: #00838F !important; /* 深青色 */
             font-size: 1.2em !important; /* 調整為 1.2em */
@@ -286,7 +287,7 @@
         .map-btn:hover { background-color: #388E3C; transform: scale(1.05); }
         .map-btn .material-icons { font-size: 1em; margin-left: 5px; color: white; }
         
-        /* 3. 新增：休館日警告樣式 */
+        /* 休館日警告樣式 */
         .closed-day-warning {
             background-color: #FFEBEE; /* 淺紅色背景 */
             color: #C62828; /* 深紅色文字 */
@@ -449,7 +450,6 @@
         .daily-summary-list li span {
             color: #333;
         }
-        /* 2. 新增：標註天氣彈性調整建議的樣式 */
         .flexibility-note-highlight {
             border-left: 8px solid #D32F2F !important; /* 更顯眼的紅色邊框 */
             background-color: #FFECB3 !important; /* 淺黃色背景 */
@@ -464,14 +464,48 @@
             font-weight: 500;
             font-size: 1em;
         }
+
         /* --- 響應式設計 (RWD) --- */
-        .menu-toggle { display: none; }
+        
+        .menu-toggle { 
+            display: none; 
+            background: none; 
+            border: none; 
+            color: white; 
+            font-size: 1.5em; 
+            cursor: pointer; 
+            padding: 5px;
+        }
+        
         @media (max-width: 768px) {
-            .navbar .nav-links { display: none; flex-direction: column; width: 100%; position: absolute; top: 60px; left: 0; }
-            .navbar .nav-links.active { display: flex; text-align: center; }
-            .menu-toggle { display: block; background: none; border: none; color: white; font-size: 1.8em; cursor: pointer; }
-            .summary-cards, .info-details { flex-direction: column; }
             
+            .menu-toggle { 
+                display: block; 
+            }
+            
+            .navbar .nav-links { 
+                display: none; 
+                flex-direction: column; 
+                width: 100%; 
+                position: absolute; 
+                top: 60px; 
+                left: 0; 
+            }
+            
+            /* 【顏色修正成功】所有連結和背景色都繼承 #004D40 */
+            .navbar .nav-links.active { 
+                display: flex; 
+                text-align: left; 
+                background-color: #004D40; /* 深綠松石色 */
+                box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            }
+            
+            .navbar a { 
+                 padding: 15px 20px; 
+                 margin-left: 0; 
+                 width: 100%;
+            }
+
             /* RWD: 將主垂直線和內容向左移動一點 */
             .timeline-container::before { left: 15px; }
             .timeline-item { padding-left: 30px; }
@@ -486,28 +520,65 @@
                 width: 100%; 
                 display: block;
                 margin-left: 0;
+                background-color: transparent; 
             }
+            
             .dropdown a.dropbtn {
-                 margin-left: 25px;
+                 margin-left: 0; 
+                 padding: 15px 20px; 
+                 width: 100%; 
+                 display: block; 
             }
+            
+            /* 第二層下拉選單預設隱藏，等待點擊 */
             .dropdown-content {
                 display: none; 
                 position: static; 
                 width: 100%;
                 box-shadow: none;
                 border-radius: 0;
-                background-color: #0097A7; 
+                /* 設定第二層專屬顏色，與第一層 #004D40 做出區隔 */
+                background-color: #00897B; 
                 transform: translateX(0);
+                padding-bottom: 5px; 
             }
+            
+            /* 讓第二層選單項目向右縮排 40px */
             .dropdown-content a {
-                padding-left: 40px; 
+                padding: 12px 40px; 
             }
-            .navbar .nav-links.active .dropdown-content {
-                display: block; 
+            
+            /* 新增：手機模式下，點擊後加上 .show class 才會展開 */
+            .dropdown-content.show {
+                display: block !important; 
             }
+
+            /* 桌面版 :hover 效果在 RWD 下需失效 */
             .dropdown:hover .dropdown-content {
                 display: none; 
             }
+        }
+        
+        /* 回到頂部按鈕 */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #FF9800; 
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 18px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s;
+        }
+        #backToTop:hover {
+            background-color: #F57C00;
         }
     </style>
 </head>
@@ -661,10 +732,10 @@
             "神戶青少年科學館": { A: 400, C: 200 }
         };
         
-        // 3 & 4. 新增：休館日警告資訊
+        // 休館日警告資訊
         const CLOSED_DAY_WARNINGS = {
             "京都鐵道博物館": "⚠️ **注意：** 本館休館日為<b>每週三</b>。",
-            "神戶青少年科學館": "⚠️ **注意：** 本館休館日為<b>每週三</b>。"
+            "神戶青少年科學館": "⚠️ **注意：** 本館休週日為<b>每週三</b>。"
         };
 
         // --- 旅遊行程數據 (每日行程) ---
@@ -834,7 +905,7 @@
                         transport: "步行", 
                         note: "◎ **科技樂園**：館內有地震體驗屋、太空艙模擬等互動設施，讓孩子在玩樂中學習科學原理。巨大積木工坊是免費遊戲區。",
                         links: {
-                            "Area Guide (PDF)": "https://www.kobe-kagakukan.jp/files/uploads/%E3%83%95%E3%83%AD%E3%83%BC%E3%82%A2%E3%83%BC%E3%82%A4%E3%83%89(%E7%A2%BA%E8%AA%8D%E7%94%A8).pdf"
+                            "Area Guide (PDF)": "https://www.kobe-kagakukan.jp/files/uploads/%E3%83%95%E3%83%AD%E3%83%BC%E3%82%A2%E3%83%BC%E3%83%89(%E7%A2%BA%E8%AA%8D%E7%94%A8).pdf"
                         }
                     },
                     { time: "17:00 - 17:15", name: "南公園 → 三宮 (交通)", transport: "Port Liner", 
@@ -1055,13 +1126,12 @@
             return '';
         };
         
-        // 3 & 4. 根據景點名稱獲取休館日警告 HTML
+        /** 根據景點名稱獲取休館日警告 HTML */
         const getClosedDayWarningHtml = (activityName) => {
             const cleanedName = activityName.replace(/\s*\(交通\)\s*/g, '').trim();
             const warning = CLOSED_DAY_WARNINGS[cleanedName];
             
             if (warning) {
-                // 將 Markdown bold 轉換為 HTML bold
                 const finalWarning = warning.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
                 return `<div class="closed-day-warning"><span class="material-icons">info</span> ${finalWarning}</div>`;
             }
@@ -1114,9 +1184,7 @@
                     let generalNoteContent = activity.note || '';
                     const linksHtml = getLinksHtml(activity.links); 
                     
-                    // 1. 新增：判斷是否為交通活動，並為景點活動應用高亮 class
                     const activityNameClass = isTransportActivity ? '' : 'highlighted-activity-name';
-                    // 3 & 4. 新增：獲取休館日警告 HTML
                     const closedDayWarningHtml = getClosedDayWarningHtml(activity.name); 
 
                     // 處理詳細轉乘路線，將其放在綠色標籤中
@@ -1167,7 +1235,6 @@
             if (locationObject.safeId) {
                 return locationObject.safeId;
             }
-            // Fallback logic for future-proofing, using the original location name
             return locationObject.location.replace(/(\(|\（).*(\)|\）)/g, '')
                        .trim()
                        .replace(/\s+/g, '-')
@@ -1279,14 +1346,6 @@
             const navLinks = document.querySelector('.nav-links');
 
             menuToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
-            navLinks.querySelectorAll('a').forEach(link => {
-                // 點擊連結或下拉選單項目後，關閉移動版選單
-                link.addEventListener('click', () => { 
-                    if (window.innerWidth <= 768) { 
-                        navLinks.classList.remove('active'); 
-                    } 
-                });
-            });
             
             // 2. 回到頂部按鈕功能
             const backToTopButton = document.getElementById('backToTop');
@@ -1299,6 +1358,62 @@
                 }
             };
             backToTopButton.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+            // 3. 行動裝置下拉選單切換功能 (A. Dropdown 專用監聽器)
+            document.querySelectorAll('.dropdown > a.dropbtn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    // 僅在行動裝置模式下執行客製化切換邏輯
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault(); // 阻止預設的錨點跳轉行為
+                        e.stopPropagation(); // 阻止事件向上傳播
+                        
+                        const dropdownContent = btn.nextElementSibling;
+                        
+                        // 關閉所有其他的下拉選單 (確保只有一個展開)
+                        document.querySelectorAll('.dropdown-content').forEach(content => {
+                            if (content !== dropdownContent) {
+                                content.classList.remove('show');
+                            }
+                        });
+                        
+                        // 切換當前下拉選單的顯示狀態 (.show class)
+                        if (dropdownContent && dropdownContent.classList) {
+                            dropdownContent.classList.toggle('show');
+                        }
+                    }
+                    // 在桌面模式下，允許點擊執行錨點跳轉
+                });
+            });
+            
+            // 4. 通用連結收合功能 (B. 通用連結監聽器)
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => { 
+                    if (window.innerWidth <= 768) { 
+                        // 【關鍵修正】如果點擊的是 Dropdown 的開關按鈕 (.dropbtn)，
+                        // 則讓專屬的監聽器處理，這裡直接退出，避免立即收合。
+                        if (link.classList.contains('dropbtn')) {
+                            return; 
+                        }
+
+                        // 如果點擊的是一般連結 (如總覽) 或下拉清單裡的項目 (如 Day 1)，才執行收合：
+                        
+                        // 收合整個漢堡選單 (Nav Links)
+                        navLinks.classList.remove('active'); 
+                        
+                        // 確保點擊第二層項目時，該項目的父層清單也收合
+                        const parentDropdownContent = link.closest('.dropdown-content');
+                        if (parentDropdownContent) {
+                            parentDropdownContent.classList.remove('show');
+                        }
+                        
+                        // 此外，為避免點擊一般連結時，其他下拉清單意外保持開啟，
+                        // 我們清空所有下拉清單的狀態（點擊下拉清單項目時，這個動作是多餘的，但無害）。
+                        document.querySelectorAll('.dropdown-content').forEach(content => {
+                            content.classList.remove('show');
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>
