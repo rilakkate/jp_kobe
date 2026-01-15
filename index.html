@@ -4,12 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎈 神戶9天8夜冬日親子之旅</title>
+    <title>🎈 2026 神戶冬日親子之旅</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <style>
         /* --- 基礎設定與排版 (童趣色調) --- */
+        :root {
+            --bg-color: #E1F5FE;    /* 淺天空藍 */
+            --main-green: #4CAF50;  /* 草地綠 */
+            --main-cyan: #00BCD4;   /* 青藍色 */
+            --accent-yellow: #FFC107; /* 陽光黃 */
+            --accent-orange: #FF9800; /* 活力橘 */
+            --text-dark: #333;
+            --card-bg: #FFFFFF;
+        }
+
         body {
             font-family: 'Noto Sans TC', sans-serif;
             margin: 0;
@@ -416,6 +426,35 @@
             color: white;
         }
 
+                /* --- 天氣彈性調整建議區塊 --- */
+        .weather-box {
+            background-color: #FFF3E0;
+            border: 2px dashed var(--accent-orange);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .weather-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .weather-btn {
+            background-color: var(--main-cyan);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .weather-btn:hover { background-color: var(--main-green); }
+
         /* 休館日警告樣式 */
         .closed-day-warning {
             background-color: #FFEBEE;
@@ -816,7 +855,7 @@
 
 <body>
     <header class="navbar">
-        <div class="logo">Kobe 親子之旅 (9天8夜) 🎡</div>
+        <div class="logo">🎡 神戶冬日親子探險 </div>
         <nav class="nav-links">
             <a href="#overview">總覽</a>
             <a href="#transport-lodging">交通住宿</a>
@@ -846,7 +885,7 @@
 
     <main class="container">
         <section id="overview" class="section">
-            <h2><span class="material-icons">directions_run</span> 行程總覽 - 神戶冬日親子探險</h2>
+            <h2><span class="material-icons">directions_run</span> 行程總覽</h2>
             <div class="summary-cards">
                 <div class="card trip-info">
                     <h3><span class="material-icons">flight_takeoff</span> 目的地</h3>
@@ -890,7 +929,15 @@
                             具高度室內覆蓋率，建議優先調整至氣候不佳日。</li>
                         <li>**戶外活動 (晴天優先)：** Day 2 (異人館)、Day 4 (姬路城)、Day 5 (明石大橋) 戶外移動時間較長，建議安排在晴朗日。</li>
                     </ul>
+               <div style="font-weight: bold; font-size: 0.9em; margin-top: 10px;">📍 即時氣象查詢 (tenki.jp)：</div>
+                <div class="weather-links">
+                    <a href="https://tenki.jp/forecast/6/31/6310/28100/" target="_blank" class="weather-btn">神戶預報</a>
+                    <a href="https://tenki.jp/forecast/6/31/6310/28201/" target="_blank" class="weather-btn">姬路預報</a>
+                    <a href="https://tenki.jp/forecast/6/30/6200/27100/" target="_blank" class="weather-btn">大阪預報</a>
+                    <a href="https://tenki.jp/forecast/6/29/6110/26100/" target="_blank" class="weather-btn">京都預報</a>
+                </div>                      
                 </div>
+               
             </div>
 
             <div class="map-link-container">
@@ -930,9 +977,7 @@
 
         <section id="shopping-guide" class="section">
             <h2><span class="material-icons">local_mall</span> 購物資訊 - 樓層與品牌清單</h2>
-            <p class="highlight-text">
-                🎁 **目標鎖定：** 鎖定這些地點的樓層與品牌，讓購物更有效率！
-            </p>
+            <p class="highlight-text"></p>
             <div id="shopping-guide-content">
             </div>
         </section>
@@ -960,7 +1005,7 @@
                         <em>(確保掌握入場或觀賞最新資訊)</em></label></li>
                 <li><input type="checkbox" id="prep6"><label for="prep6">京都鐵道博物館：確認**新幹線駕駛模擬器**預約規定
                         <em>(優先安排體驗，避免向隅)</em></label></li>
-                <li><input type="checkbox" id="prep7"><label for="prep7">Port Liner 交通券：考慮購買**Port Liner + 神戶動物王國**園區套票
+                <li><input type="checkbox" id="prep7"><label for="prep7">Port Liner 交通券：購買**Port Liner + 神戶動物王國**園區套票
                         <em>(節省交通及門票費用)</em></label></li>
                 <li><input type="checkbox" id="prep8"><label for="prep8">冬季保暖衣物：採**洋蔥式穿法**
                         <em>(神戶一月均溫較低，需特別注意防寒)</em></label></li>
@@ -1073,7 +1118,7 @@
                 ]
             },
             {
-                date: "DAY 4 (1/27 二) - 尋訪白鷺城",
+                date: "DAY 4 (1/27 二) - 國寶城池探險",
                 activities: [
                     {
                         time: "09:00 - 10:00", name: "三ノ宮 → 姫路 (交通)", transport: "JR 神戸線新快速",
@@ -1155,14 +1200,20 @@
                 ]
             },
             {
-                date: "DAY 7 (1/30 五) - 動物與科學的魔法",
+                date: "DAY 7 (1/30 五) - 萌寵與神聖之光",
                 activities: [
                     {
-                        time: "09:30 - 10:00", name: "三宮 → 神戶動物王國 (交通)", transport: "Port Liner",
-                        note: "【轉乘路線】[ポートライナー(神戸空港行)] 三宮 → 計算科学センター\n建議購買Port Liner +園區套票更划算。"
+                        time: "09:00 - 10:30",
+                        name: "生田神社",
+                        transport: "步行",
+                        note: "◎ **神戶的守護神**：歷史悠久，被稱為神戶的發祥地之一。除了祈求姻緣，其位於市中心的寧靜氛圍也值得一訪。"
+                    },                    
+                    {
+                        time: "10:35 - 10:49", name: "三宮 → 神戶動物王國 (交通)", transport: "Port Liner",
+                        note: "【轉乘路線】[ポートライナー(神戸空港行)] 三宮 → 計算科学センター\n購買Port Liner +園區套票更划算。"
                     },
                     {
-                        time: "10:00 - 14:00",
+                        time: "11:00 - 16:00",
                         name: "神戶動物王國",
                         transport: "步行",
                         note: "◎ **零距離互動**：室內外有各種開放式區域，可近距離餵食水豚、袋鼠、羊駝等動物。有精彩的飛禽表演和巨大的水生動物區。",
@@ -1172,23 +1223,10 @@
                         }
                     },
                     {
-                        time: "14:00 - 14:16", name: "計算科学センター → 南公園 (交通)", transport: "Port Liner",
-                        note: "【轉乘路線】[ポートライナー(三宮行)] 計算科学センター → 市民広場 → [ポートライナー(北埠頭経由三宮行)] 南公園"
-                    },
-                    {
-                        time: "14:15 - 17:00",
-                        name: "神戶青少年科學館",
-                        transport: "步行",
-                        note: "◎ **科技樂園**：館內有地震體驗屋、太空艙模擬等互動設施，讓孩子在玩樂中學習科學原理。巨大積木工坊是免費遊戲區。",
-                        links: {
-                            "Area Guide (PDF)": "https://www.kobe-kagakukan.jp/files/uploads/%E3%83%95%E3%83%AD%E3%83%BC%E3%82%A2%E3%83%BC%E3%83%89(%E7%A2%BA%E8%AA%8D%E7%94%A8).pdf"
-                        }
-                    },
-                    {
-                        time: "17:00 - 17:15", name: "南公園 → 三宮 (交通)", transport: "Port Liner",
-                        note: "【轉乘路線】[ポートライナー(三宮行)] 南公園 → 三宮\n車資: 250日圓。"
-                    },
-                    { time: "17:20 - 18:20", name: "三宮商店街晚餐", transport: "步行", note: "晚餐時間，準備前往祭典地點。" },
+                        time: "16:04 - 16:18", name: "計算科学センター → 三宮 (交通)", transport: "Port Liner",
+                        note: "【轉乘路線】[ポートライナー(三宮行)] 計算科学センター → 三宮"
+                    },                    
+                    { time: "16:30 - 18:30", name: "三宮商店街晚餐", transport: "步行", note: "晚餐時間，準備前往祭典地點。" },
                     {
                         time: "18:30 ~ 20:30",
                         name: "神戶光之祭典 (Luminarie)",
@@ -1199,20 +1237,14 @@
                 ]
             },
             {
-                date: "DAY 8 (1/31 六) - 臨海樂園採買日",
+                date: "DAY 8 (1/31 六) - 港灣樂園採買日",
                 activities: [
                     {
-                        time: "09:30 - 10:30",
-                        name: "生田神社",
-                        transport: "步行",
-                        note: "◎ **神戶的守護神**：歷史悠久，被稱為神戶的發祥地之一。除了祈求姻緣，其位於市中心的寧靜氛圍也值得一訪。"
-                    },
-                    {
-                        time: "10:30 - 11:00", name: "三ノ宮 → 神戸（臨海樂園） (交通)", transport: "JR 神戸線",
+                        time: "09:56 - 10:00", name: "三ノ宮 → 神戸（臨海樂園） (交通)", transport: "JR 神戸線",
                         note: "【轉乘路線】[JR 神戸線(須磨行)] 三ノ宮 → 神戸\n車資: 150日圓。"
                     },
                     {
-                        time: "11:00 - 18:00",
+                        time: "10:00 - 18:00",
                         name: "神戶臨海樂園umie & Mosaic馬賽克廣場",
                         transport: "步行",
                         note: "◎ **海港購物區**：umie 4F 有大型 TOYSRUS，Mosaic 廣場則有 KIDDY LAND 和 SNOOPY TOWN，是採買玩具和零食伴手禮的絕佳地點。"
@@ -1295,8 +1327,8 @@
                     "護照(確認有效期限至少還有 6 個月)",
                     "護照影本",
                     "簽證相關文件(如需要)",
-                    "機票/訂票資訊(建議存電子檔及列印紙本)",
-                    "信用卡(至少 2 張不同系統的卡)",
+                    "機票/訂票資訊(電子檔及紙本)",
+                    "信用卡(2 張不同系統的卡)",
                     "現金",
                     "海外旅行保險(單)",
                     "國際駕照",
